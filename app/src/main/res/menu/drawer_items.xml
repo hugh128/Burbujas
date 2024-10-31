@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1">
+
+        <item
+            android:icon="@drawable/service"
+            android:id="@+id/navService"
+            android:title="Servicio"
+            />
+
+        <item
+            android:icon="@drawable/historial"
+            android:id="@+id/navHistorial"
+            android:title="Historial"
+            />
+
+        <item
+            android:icon="@drawable/perfil"
+            android:id="@+id/navPerfil"
+            android:title="Perfil"
+            />
+
+        <item
+            android:icon="@drawable/opciones"
+            android:id="@+id/navOpciones"
+            android:title="Opciones"
+            />
+
+    </group>
+
+    <group
+        android:id="@+id/group2">
+
+        <item
+            android:icon="@drawable/acercade"
+            android:id="@+id/navAcercaDe"
+            android:title="Acerca de"
+            />
+
+        <item
+            android:icon="@drawable/salir"
+            android:id="@+id/navSalir"
+            android:title="Salir"
+            />
+
+    </group>
+
+</menu>
