@@ -8,6 +8,8 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawerLayout)
         toggleButton = findViewById(R.id.buttonDrawerToggle)
+        val navigationView: NavigationView = findViewById(R.id.navigationView)
 
         toggleButton.setOnClickListener {
             when {
@@ -33,5 +36,30 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Configurar el NavigationView para manejar el cambio de fragmentos
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.navService -> replaceFragment(ServiceFragment())
+                R.id.navHistorial -> replaceFragment(HistoryFragment())
+                R.id.navPerfil -> replaceFragment(PerfilFragment())
+                R.id.navOpciones -> replaceFragment(OptionsFragment())
+                R.id.navAcercaDe -> replaceFragment(AboutFragment())
+                R.id.navSalir -> finish() // Cierra la aplicación
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+
+        // Configura el fragmento inicial
+        replaceFragment(ServiceFragment())
+
+    }
+
+    // Método para reemplazar el fragmento en el FrameLayout
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
 }
