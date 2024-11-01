@@ -1,0 +1,41 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Capa de sombra -->
+    <item
+        android:bottom="50dp"
+        android:left="8dp"
+        android:right="50dp"
+        android:top="8dp">
+    <shape android:shape="rectangle">
+        <solid android:color="#D1D1D1" /> <!-- Color de la sombra (semi-transparente) -->
+        <corners android:radius="16dp" /> <!-- Mismo radio de esquinas -->
+    </shape>
+</item>
+
+    <!-- Capa del botón -->
+<item>
+<selector>
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#046be5" /> <!-- Color más oscuro al presionar -->
+            <corners android:radius="16dp" /> <!-- Radio de los bordes redondeados -->
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#157efb" /> <!-- Color original del botón -->
+            <corners android:radius="16dp" />
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+</selector>
+</item>
+    </layer-list>

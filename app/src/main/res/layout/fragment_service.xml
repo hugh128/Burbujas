@@ -1,14 +1,726 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="16dp">
+    android:background="#f6f7fc">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Servicio"
-        android:textSize="24sp" />
-</LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/top_view"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bg_view" />
+
+            <ImageView
+                android:id="@+id/robot"
+                android:layout_width="161dp"
+                android:layout_height="173dp"
+                android:src="@drawable/robot"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="240dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/robot"
+                android:layout_marginTop="-170dp"
+                android:layout_marginLeft="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hola,"
+                    android:textColor="#343d5e"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Usuario"
+                    android:textColor="#08143c"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Selecciona los servicios"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="que necesitas"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top_view"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SERVICIOS"
+                    android:textColor="#727991"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_margin="25dp"
+                    />
+            </LinearLayout>
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="4"
+                android:columnCount="2"
+                android:layout_marginTop="40dp"
+                android:layout_below="@+id/top_view"
+                android:padding="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1"
+                    android:layout_width="150dp"
+                    android:layout_height="185dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="12dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cardCheckBox1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="-45dp"
+                            android:padding="10dp"
+                            android:clickable="false"
+                            android:focusable="false" />
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/carwash" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lavado y Secado"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:paddingLeft="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q.10.00"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2"
+                    android:layout_width="150dp"
+                    android:layout_height="185dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="12dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cardCheckBox2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="-45dp"
+                            android:padding="10dp"
+                            android:clickable="false"
+                            android:focusable="false" />
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/clean" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aspirado"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:paddingLeft="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q.10.00"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card3"
+                    android:layout_width="150dp"
+                    android:layout_height="185dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="12dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cardCheckBox3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="-45dp"
+                            android:padding="10dp"
+                            android:clickable="false"
+                            android:focusable="false" />
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/soap" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aplicar Silicon"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:paddingLeft="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q.5.00"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card4"
+                    android:layout_width="150dp"
+                    android:layout_height="185dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="12dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cardCheckBox4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="-45dp"
+                            android:padding="10dp"
+                            android:clickable="false"
+                            android:focusable="false" />
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/polish" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pulido"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:paddingLeft="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q.50.00"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card5"
+                    android:layout_width="150dp"
+                    android:layout_height="185dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="12dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cardCheckBox5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="-45dp"
+                            android:padding="10dp"
+                            android:clickable="false"
+                            android:focusable="false" />
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/engine" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lavado de Motor"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:paddingLeft="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q.100.00"
+                            android:textColor="#0d1940"
+                            android:textSize="16sp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+            <LinearLayout
+                android:id="@+id/titleDetalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gridLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DETALLES"
+                    android:textColor="#727991"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="25dp"
+                    />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/containerDetalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_below="@+id/titleDetalles"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:background="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Servicios realizados"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Lavado Y Secado"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/precioLavado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Aspirado"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/precioAspirado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Aplicacion de Silicon"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/precioSilicon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Pulido"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/precioPulido"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Lavado De Motor"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/precioLavadoMotor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="15sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="sans-serif-thin"
+                        android:text="---------------------"
+                        android:textColor="#D1949090"
+                        android:layout_marginTop="-10dp"
+                        android:textSize="40sp"
+                        android:textStyle="normal" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Subtotal"
+                            android:textSize="16sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/subtotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="16sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="IVA"
+                            android:textSize="16sp"
+                            android:textColor="#333333" />
+
+                        <TextView
+                            android:id="@+id/iva"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="16sp"
+                            android:textColor="#333333" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Comision"
+                            android:textSize="16sp"
+                            android:textColor="#10b1d6" />
+
+                        <TextView
+                            android:id="@+id/comision"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textSize="16sp"
+                            android:textColor="#10b1d6" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TOTAL"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="#000" />
+
+                        <TextView
+                            android:id="@+id/total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:text="0.00"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="#000" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/containerButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/containerDetalles"
+                android:backgroundTint="#f6f7fc"
+                >
+
+                <LinearLayout
+                    android:id="@+id/buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_margin="20dp"
+                    >
+
+                    <Button
+                        android:id="@+id/btnCalcular"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Calcular"
+                        android:textColor="@color/white"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/rounded_button_selector" />
+
+                    <Button
+                        android:id="@+id/btnComision"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Comision"
+                        android:textColor="@color/white"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/rounded_button2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/containerButtons"
+                android:backgroundTint="#f6f7fc"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="50dp"
+                    >
+
+                    <Button
+                        android:id="@+id/btnRegistrar"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Registrar"
+                        android:textColor="@color/white"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/rounded_button3"
+                        android:drawableStart="@drawable/add"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

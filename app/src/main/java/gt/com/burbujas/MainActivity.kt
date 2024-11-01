@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Configurar el NavigationView para manejar el cambio de fragmentos
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navService -> replaceFragment(ServiceFragment())
@@ -45,18 +44,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.navPerfil -> replaceFragment(PerfilFragment())
                 R.id.navOpciones -> replaceFragment(OptionsFragment())
                 R.id.navAcercaDe -> replaceFragment(AboutFragment())
-                R.id.navSalir -> finish() // Cierra la aplicación
+                R.id.navSalir -> finish()
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
 
-        // Configura el fragmento inicial
         replaceFragment(ServiceFragment())
 
     }
 
-    // Método para reemplazar el fragmento en el FrameLayout
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
