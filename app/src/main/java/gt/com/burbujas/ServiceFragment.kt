@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
+import data.models.BaseDatos
 import data.models.Calculos
 
 class ServiceFragment : Fragment() {
@@ -17,10 +18,10 @@ class ServiceFragment : Fragment() {
     private lateinit var ivaTextView: TextView
     private lateinit var comisionTextView: TextView
     private lateinit var totalPrecioTextView: TextView
-    private var subTotal: Double = 0.0
-    private var ivaTotal: Double = 0.0
-    private var comisionTotal: Double = 0.0
-    private var totalPrecio: Double = 0.0
+    private var subTotal = 0.0
+    private var ivaTotal = 0.0
+    private var comisionTotal = 0.0
+    private lateinit var baseDatos: BaseDatos
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,25 +38,26 @@ class ServiceFragment : Fragment() {
         val btnComision = view.findViewById<Button>(R.id.btnComision)
         val btnRegistrar = view.findViewById<Button>(R.id.btnRegistrar)
 
+        baseDatos = BaseDatos(requireContext())
+
         val preciosServicios = listOf(10.00, 10.00, 5.00, 50.00, 100.00)
         val textViewsPrecios = listOf(
-            view.findViewById<TextView>(R.id.precioLavado),
-            view.findViewById<TextView>(R.id.precioAspirado),
-            view.findViewById<TextView>(R.id.precioSilicon),
-            view.findViewById<TextView>(R.id.precioPulido),
-            view.findViewById<TextView>(R.id.precioLavadoMotor),
-        )
+            R.id.precioLavado,
+            R.id.precioAspirado,
+            R.id.precioSilicon,
+            R.id.precioPulido,
+            R.id.precioLavadoMotor
+        ).map { view.findViewById<TextView>(it) }
 
         val cardCheckboxPairs = listOf(
-            view.findViewById<CardView>(R.id.card1) to view.findViewById<CheckBox>(R.id.cardCheckBox1),
-            view.findViewById<CardView>(R.id.card2) to view.findViewById<CheckBox>(R.id.cardCheckBox2),
-            view.findViewById<CardView>(R.id.card3) to view.findViewById<CheckBox>(R.id.cardCheckBox3),
-            view.findViewById<CardView>(R.id.card4) to view.findViewById<CheckBox>(R.id.cardCheckBox4),
-            view.findViewById<CardView>(R.id.card5) to view.findViewById<CheckBox>(R.id.cardCheckBox5)
+            Triple(view.findViewById<CardView>(R.id.card1), view.findViewById<CheckBox>(R.id.cardCheckBox1), view.findViewById<TextView>(R.id.titleCard1)),
+            Triple(view.findViewById<CardView>(R.id.card2), view.findViewById<CheckBox>(R.id.cardCheckBox2), view.findViewById<TextView>(R.id.titleCard2)),
+            Triple(view.findViewById<CardView>(R.id.card3), view.findViewById<CheckBox>(R.id.cardCheckBox3), view.findViewById<TextView>(R.id.titleCard3)),
+            Triple(view.findViewById<CardView>(R.id.card4), view.findViewById<CheckBox>(R.id.cardCheckBox4), view.findViewById<TextView>(R.id.titleCard4)),
+            Triple(view.findViewById<CardView>(R.id.card5), view.findViewById<CheckBox>(R.id.cardCheckBox5), view.findViewById<TextView>(R.id.titleCard5))
         )
 
-        for ((index, pair) in cardCheckboxPairs.withIndex()) {
-            val (card, checkbox) = pair
+        cardCheckboxPairs.forEachIndexed { index, (card, checkbox, _) ->
             val precioServicio = preciosServicios[index]
             val textViewPrecio = textViewsPrecios[index]
 
@@ -68,7 +70,7 @@ class ServiceFragment : Fragment() {
         val calculos = Calculos()
 
         btnCalcular.setOnClickListener {
-            if(subTotal == 0.0) {
+            if (subTotal == 0.0) {
                 Toast.makeText(requireContext(), "Selecciona al menos un servicio", Toast.LENGTH_SHORT).show()
             } else {
                 ivaTotal = calculos.calcularIVA(subTotal.toFloat()).toDouble()
@@ -78,7 +80,7 @@ class ServiceFragment : Fragment() {
         }
 
         btnComision.setOnClickListener {
-            if(subTotal == 0.0) {
+            if (subTotal == 0.0) {
                 Toast.makeText(requireContext(), "Selecciona al menos un servicio", Toast.LENGTH_SHORT).show()
             } else {
                 comisionTotal = calculos.calcularComision(subTotal.toFloat()).toDouble()
@@ -88,14 +90,40 @@ class ServiceFragment : Fragment() {
         }
 
         btnRegistrar.setOnClickListener {
-            if(ivaTotal == 0.0 || comisionTotal == 0.0) {
+            if (ivaTotal == 0.0 || comisionTotal == 0.0) {
                 Toast.makeText(requireContext(), "Calcula el valor del IVA y de la comision", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Registro almacenado en la base de datos", Toast.LENGTH_SHORT).show()
+                val fechaRegistro = obtenerFechaActual()
+                val serviciosSeleccionados = obtenerServiciosSeleccionados(cardCheckboxPairs)
+                val costoIva = subTotal + ivaTotal
+
+                val id = baseDatos.insertarRegistros(costoIva.toFloat(), comisionTotal.toFloat(), fechaRegistro, serviciosSeleccionados)
+
+                if (id != -1L) {
+                    Toast.makeText(requireContext(), "Registro almacenado con éxito", Toast.LENGTH_SHORT).show()
+                    reiniciarEstado(cardCheckboxPairs, textViewsPrecios)
+                } else {
+                    Toast.makeText(requireContext(), "Error al almacenar el registro", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
         return view
+    }
+
+    private fun reiniciarEstado(cardCheckboxPairs: List<Triple<CardView, CheckBox, TextView>>, textViewsPrecios: List<TextView>) {
+        cardCheckboxPairs.forEach { (_, checkbox, _) -> checkbox.isChecked = false }
+        textViewsPrecios.forEach { it.apply { text = "0.00" } }
+
+        subTotal = 0.0
+        subTotalTextView.text = formatearPrecio(subTotal)
+
+        ivaTotal = 0.0
+        comisionTotal = 0.0
+        ivaTextView.text = formatearPrecio(ivaTotal)
+        comisionTextView.text = formatearPrecio(comisionTotal)
+
+        actualizarTotal()
     }
 
     private fun actualizarPrecio(precio: Double, textViewPrecio: TextView, agregar: Boolean) {
@@ -108,7 +136,6 @@ class ServiceFragment : Fragment() {
         }
 
         subTotalTextView.text = formatearPrecio(subTotal)
-
         ivaTotal = 0.0
         comisionTotal = 0.0
         ivaTextView.text = formatearPrecio(ivaTotal)
@@ -118,11 +145,20 @@ class ServiceFragment : Fragment() {
     }
 
     private fun actualizarTotal() {
-        totalPrecio = subTotal + ivaTotal + comisionTotal
-        totalPrecioTextView.text = formatearPrecio(totalPrecio)
+        totalPrecioTextView.text = formatearPrecio(subTotal + ivaTotal + comisionTotal)
     }
 
     private fun formatearPrecio(precio: Double): String {
         return "Q${"%.2f".format(precio)}"
+    }
+
+    private fun obtenerFechaActual(): String {
+        val formatoFecha = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+        return formatoFecha.format(System.currentTimeMillis())
+    }
+
+    private fun obtenerServiciosSeleccionados(cardCheckboxPairs: List<Triple<CardView, CheckBox, TextView>>): String {
+        return cardCheckboxPairs.filter { it.second.isChecked }
+            .joinToString(", ") { it.third.text.toString() }
     }
 }

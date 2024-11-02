@@ -132,6 +132,7 @@
                             android:src="@drawable/carwash" />
 
                         <TextView
+                            android:id="@+id/titleCard1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lavado y Secado"
@@ -185,6 +186,7 @@
                             android:src="@drawable/clean" />
 
                         <TextView
+                            android:id="@+id/titleCard2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Aspirado"
@@ -238,6 +240,7 @@
                             android:src="@drawable/soap" />
 
                         <TextView
+                            android:id="@+id/titleCard3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Aplicar Silicon"
@@ -291,6 +294,7 @@
                             android:src="@drawable/polish" />
 
                         <TextView
+                            android:id="@+id/titleCard4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pulido"
@@ -345,6 +349,7 @@
                             android:src="@drawable/engine" />
 
                         <TextView
+                            android:id="@+id/titleCard5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lavado de Motor"
