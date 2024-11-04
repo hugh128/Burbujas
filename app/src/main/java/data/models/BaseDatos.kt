@@ -104,7 +104,7 @@ class BaseDatos(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
                 val usuario = cursor.getString(cursor.getColumnIndex("usuario"))
                 val password = cursor.getString(cursor.getColumnIndex("password"))
                 val tipo = cursor.getString(cursor.getColumnIndex("tipo"))
-                val fechaCreacion = cursor.getString(cursor.getColumnIndex("fecha_creacion"))
+                val fechaCreacion = cursor.getString(cursor.getColumnIndex("fechaCreacion"))
                 listaUsuarios.add(Usuario(id, nombre, usuario, password, tipo, fechaCreacion))
             } while (cursor.moveToNext())
         }

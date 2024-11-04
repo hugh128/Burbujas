@@ -42,12 +42,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/topHeader"
         android:orientation="horizontal"
-        android:gravity="end"
+        android:gravity="center"
         >
 
         <Button
+            android:id="@+id/btnMostrarUsuarios"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Mostar Usuario"
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button4"
+            />
+
+        <Button
             android:id="@+id/btnAgregarUsuario"
-            android:layout_width="175dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Nuevo Usuario"
             android:textSize="12dp"
@@ -71,7 +82,7 @@
 
             <TableLayout
                 android:background="@color/white"
-                android:id="@+id/table_layout_records"
+                android:id="@+id/tablaUsuarios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:stretchColumns="1"

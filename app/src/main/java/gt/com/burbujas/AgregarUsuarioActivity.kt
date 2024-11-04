@@ -1,7 +1,6 @@
 package gt.com.burbujas
 
 import android.os.Bundle
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -16,7 +15,7 @@ class AgregarUsuarioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_nuevo_usuario) // Cambia esto a tu nuevo layout
+        setContentView(R.layout.fragment_nuevo_usuario)
 
         val nombreEditText = findViewById<EditText>(R.id.txtNombre)
         val usuarioEditText = findViewById<EditText>(R.id.txtUsuario)
@@ -25,7 +24,6 @@ class AgregarUsuarioActivity : AppCompatActivity() {
         val agregarButton = findViewById<Button>(R.id.btnAgregar)
         val btnSalir = findViewById<Button>(R.id.btnSalir)
 
-        // Agregar la opción vacía al Spinner
         val opciones = arrayOf("", "Administrador", "Usuario")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -37,7 +35,6 @@ class AgregarUsuarioActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString().trim()
             val tipo = tipoSpinner.selectedItem.toString()
 
-            // Verificar si los campos están vacíos
             if (nombre.isEmpty() || usuario.isEmpty() || password.isEmpty() || tipo.isEmpty()) {
                 Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
