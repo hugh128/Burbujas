@@ -25,7 +25,7 @@
         <item
             android:icon="@drawable/opciones"
             android:id="@+id/navOpciones"
-            android:title="Opciones"
+            android:title="Usuarios"
             />
 
     </group>

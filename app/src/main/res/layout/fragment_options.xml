@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#f6f7fc"
+    android:id="@+id/fragment_container"
+    >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/topHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opciones"
-        android:textSize="24sp" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Gestion de usuarios"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Administre los miembros de su equipo"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topHeader"
+        android:orientation="horizontal"
+        android:gravity="end"
+        >
+
+        <Button
+            android:id="@+id/btnAgregarUsuario"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Nuevo Usuario"
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button3"
+            android:drawableStart="@drawable/add"
+            />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_marginTop="16dp">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:background="@color/white"
+                android:id="@+id/table_layout_records"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:divider="@android:color/darker_gray"
+                android:showDividers="middle">
+            </TableLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+</RelativeLayout>

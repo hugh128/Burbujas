@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class BaseDatos(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_NAME = "burbuja.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -78,7 +78,44 @@ class BaseDatos(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return listaRegistros
     }
+
+    fun insertarUsuario(nombre: String, usuario: String, password: String, tipo: String, fechaCreacion: String): Long {
+        val db = this.writableDatabase
+        val valores = ContentValues()
+        valores.put("nombre", nombre)
+        valores.put("usuario", usuario)
+        valores.put("password", password)
+        valores.put("tipo", tipo)
+        valores.put("fechaCreacion", fechaCreacion)
+        val id = db.insert("usuarios", null, valores)
+        db.close()
+        return id
+    }
+
+    fun obtenerUsuarios(): List<Usuario> {
+        val listaUsuarios = mutableListOf<Usuario>()
+        val db = this.readableDatabase
+        val cursor: Cursor = db.rawQuery("SELECT * FROM usuarios", null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndex("id"))
+                val nombre = cursor.getString(cursor.getColumnIndex("nombre"))
+                val usuario = cursor.getString(cursor.getColumnIndex("usuario"))
+                val password = cursor.getString(cursor.getColumnIndex("password"))
+                val tipo = cursor.getString(cursor.getColumnIndex("tipo"))
+                val fechaCreacion = cursor.getString(cursor.getColumnIndex("fecha_creacion"))
+                listaUsuarios.add(Usuario(id, nombre, usuario, password, tipo, fechaCreacion))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return listaUsuarios
+    }
 }
 
 // Modelo Registros
 data class Registro(val id: Int, val costoIva: Float, val comision: Float, val fechaRegistro: String, val servicios: String)
+
+// Modelo de Usuario
+data class Usuario(val id: Int, val nombre: String, val usuario: String, val password: String, val tipo: String, val fechaCreacion: String)
