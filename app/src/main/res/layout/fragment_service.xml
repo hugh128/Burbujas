@@ -22,19 +22,12 @@
                 android:layout_height="150dp"
                 android:background="@drawable/bg_view" />
 
-            <ImageView
-                android:id="@+id/robot"
-                android:layout_width="161dp"
-                android:layout_height="173dp"
-                android:src="@drawable/robot"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="240dp" />
-
             <LinearLayout
+                android:id="@+id/header_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/robot"
-                android:layout_marginTop="-170dp"
+                android:layout_below="@id/top_view"
+                android:layout_marginTop="-145dp"
                 android:layout_marginLeft="40dp"
                 android:orientation="vertical">
 
@@ -70,6 +63,14 @@
                     android:text="que necesitas"
                     android:textSize="18sp" />
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/car_main"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:src="@drawable/car_main1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="210dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
