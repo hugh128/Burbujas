@@ -78,6 +78,16 @@ class BaseDatos(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return listaRegistros
     }
+
+    fun validarUsuario(usuario: String, password: String): Boolean {
+        val db = this.readableDatabase
+        val cursor: Cursor = db.rawQuery("SELECT * FROM usuarios WHERE usuario = ? AND password = ?", arrayOf(usuario, password))
+        val existe = cursor.count > 0
+        cursor.close()
+        db.close()
+        return existe
+    }
+
 }
 
 // Modelo Registros
