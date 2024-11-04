@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class BaseDatos(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_NAME = "burbuja.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 1
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -37,6 +37,12 @@ class BaseDatos(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
             )
         """
         db.execSQL(crearTablaRegistros)
+        // Insertar usuario administrador predeterminado
+        val insertarAdmin = """
+            INSERT INTO usuarios (nombre, usuario, password, tipo, fechaCreacion)
+            VALUES ('Administrador', 'admin', 'admin123', 'Administrador', datetime('now'))
+            """
+        db.execSQL(insertarAdmin)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
