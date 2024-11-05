@@ -26,7 +26,24 @@
 - **Historial de Servicios**: Muestra un registro de los cálculos realizados anteriormente, permitiendo que el trabajador consulte la información de servicios pasados.
 
 ## Screenshots
-*(Incluya capturas de pantalla de la aplicación aquí)*
+- Login
+![](/images/login.png)
+
+- Menu
+![](/images/menu.png)
+
+- Home
+![](/images/home1.png)
+![](/images/home2.png)
+
+- Registros
+![](/images/registros.png)
+
+- Gestion Usuarios
+![](/images/gestionDeUsuarios.png)
+
+-Acerca de
+![](/images/acercaDe.png)
 
 ## Requisitos
 
